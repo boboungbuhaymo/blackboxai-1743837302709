@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard | Magic School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .magic-card {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 150, 255, 0.5);
+            box-shadow: 0 0 30px rgba(0, 150, 255, 0.5);
+        }
+        .magic-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .magic-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 150, 255, 0.3);
+        }
+        .magic-btn:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+        .magic-btn:hover:after {
+            left: 100%;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .grade-A { color: #4ade80; }
+        .grade-B { color: #a3e635; }
+        .grade-C { color: #facc15; }
+        .grade-D { color: #fb923c; }
+        .grade-F { color: #f87171; }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen p-6">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-3xl font-bold text-white">
+                    <i class="fas fa-book-open mr-2"></i> Student Portal
+                </h1>
+                <div class="text-blue-200 bg-blue-900 bg-opacity-50 px-3 py-1 rounded-full text-sm pulse">
+                    Current Grade: A
+                </div>
+            </div>
+            <button onclick="logout()" class="magic-btn px-4 py-2 bg-blue-600 text-white rounded-lg">
+                Logout <i class="fas fa-sign-out-alt ml-2"></i>
+            </button>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Profile Card -->
+            <div class="magic-card p-6 rounded-2xl md:col-span-1">
+                <div class="text-center">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-blue-500 bg-opacity-30 flex items-center justify-center text-4xl">
+                        📚
+                    </div>
+                    <h2 class="text-xl font-bold text-white" id="student-name">Apprentice Willow</h2>
+                    <p class="text-blue-200">Magical Arts Program</p>
+                    
+                    <div class="mt-6 space-y-3 text-left">
+                        <div>
+                            <span class="text-blue-200 block">Student ID:</span>
+                            <span class="text-white">MAG-2023-001</span>
+                        </div>
+                        <div>
+                            <span class="text-blue-200 block">House:</span>
+                            <span class="text-white">Phoenix Feather</span>
+                        </div>
+                        <div>
+                            <span class="text-blue-200 block">Advisor:</span>
+                            <span class="text-white">Prof. Spellman</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grades Card -->
+            <div class="magic-card p-6 rounded-2xl md:col-span-2">
+                <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                    <i class="fas fa-star mr-2"></i> My Grades
+                </h2>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-white">
+                        <thead>
+                            <tr class="border-b border-blue-400">
+                                <th class="py-2 text-left">Subject</th>
+                                <th class="py-2 text-left">Midterm</th>
+                                <th class="py-2 text-left">Final</th>
+                                <th class="py-2 text-left">Overall</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-blue-800">
+                                <td class="py-2">Potions</td>
+                                <td class="py-2 grade-A">A</td>
+                                <td class="py-2 grade-A">A</td>
+                                <td class="py-2 grade-A">A</td>
+                            </tr>
+                            <tr class="border-b border-blue-800">
+                                <td class="py-2">Spellcasting</td>
+                                <td class="py-2 grade-B">B</td>
+                                <td class="py-2 grade-A">A</td>
+                                <td class="py-2 grade-B">B+</td>
+                            </tr>
+                            <tr class="border-b border-blue-800">
+                                <td class="py-2">Magical Creatures</td>
+                                <td class="py-2 grade-A">A</td>
+                                <td class="py-2 grade-A">A</td>
+                                <td class="py-2 grade-A">A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Attendance Card -->
+            <div class="magic-card p-6 rounded-2xl md:col-span-3">
+                <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                    <i class="fas fa-calendar-alt mr-2"></i> Attendance Record
+                </h2>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-white">
+                        <thead>
+                            <tr class="border-b border-blue-400">
+                                <th class="py-2 text-left">Date</th>
+                                <th class="py-2 text-left">Subject</th>
+                                <th class="py-2 text-left">Status</th>
+                                <th class="py-2 text-left">Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-blue-800">
+                                <td class="py-2">10/15/2023</td>
+                                <td class="py-2">Potions</td>
+                                <td class="py-2 text-green-400">Present</td>
+                                <td class="py-2 text-blue-200">-</td>
+                            </tr>
+                            <tr class="border-b border-blue-800">
+                                <td class="py-2">10/12/2023</td>
+                                <td class="py-2">Spellcasting</td>
+                                <td class="py-2 text-yellow-400">Late</td>
+                                <td class="py-2 text-blue-200">Portal malfunction</td>
+                            </tr>
+                            <tr class="border-b border-blue-800">
+                                <td class="py-2">10/10/2023</td>
+                                <td class="py-2">Magical Creatures</td>
+                                <td class="py-2 text-green-400">Present</td>
+                                <td class="py-2 text-blue-200">Extra credit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Announcements Card -->
+            <div class="magic-card p-6 rounded-2xl md:col-span-3">
+                <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                    <i class="fas fa-bullhorn mr-2"></i> School Announcements
+                </h2>
+                
+                <div class="space-y-3">
+                    <div class="bg-blue-900 bg-opacity-30 p-3 rounded-lg">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-white">Exam Schedule Update</h3>
+                            <span class="text-xs text-blue-200">2 days ago</span>
+                        </div>
+                        <p class="text-blue-100 mt-1">The potions exam has been rescheduled to next Monday.</p>
+                    </div>
+                    <div class="bg-blue-900 bg-opacity-30 p-3 rounded-lg">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-white">Magical Field Trip</h3>
+                            <span class="text-xs text-blue-200">1 week ago</span>
+                        </div>
+                        <p class="text-blue-100 mt-1">Visit to the Enchanted Forest scheduled for November 5th.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Set current student info
+        window.onload = function() {
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            if (user) {
+                document.getElementById('student-name').textContent = user.name;
+                document.querySelector('header h1').innerHTML = 
+                    `<i class="fas fa-book-open mr-2"></i> ${user.name}'s Portal`;
+                document.querySelector('header div').textContent = `Current Grade: ${user.grade}`;
+            }
+        };
+    </script>
+</body>
+</html>
