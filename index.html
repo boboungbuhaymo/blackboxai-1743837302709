@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic School Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .magic-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 150, 255, 0.5);
+        }
+        .magic-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .magic-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 150, 255, 0.3);
+        }
+        .magic-btn:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+        .magic-btn:hover:after {
+            left: 100%;
+        }
+        .admin-theme {
+            box-shadow: 0 0 30px rgba(255, 50, 50, 0.7) !important;
+            border: 1px solid rgba(255, 100, 100, 0.5) !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="magic-card rounded-2xl p-8 w-full max-w-md relative overflow-hidden">
+        <!-- Magic particles effect -->
+        <div class="absolute -top-10 -left-10 w-20 h-20 rounded-full bg-blue-400 opacity-20 filter blur-xl"></div>
+        <div class="absolute -bottom-10 -right-10 w-20 h-20 rounded-full bg-blue-400 opacity-20 filter blur-xl"></div>
+        
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-white mb-2">Magic School</h1>
+            <p class="text-blue-200">Enter the portal of knowledge</p>
+        </div>
+        
+        <form id="loginForm" class="space-y-6">
+            <div>
+                <label class="block text-blue-100 mb-2">Username</label>
+                <input type="text" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 border border-blue-300 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            
+            <div>
+                <label class="block text-blue-100 mb-2">Password</label>
+                <input type="password" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 border border-blue-300 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            
+            <div>
+                <label class="block text-blue-100 mb-2">Select Role</label>
+                <select class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 border border-blue-300 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option class="bg-gray-800">Student</option>
+                    <option class="bg-gray-800">Teacher</option>
+                    <option class="bg-gray-800">Admin</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="w-full magic-btn py-3 px-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-semibold">
+                Enter Portal <i class="fas fa-hat-wizard ml-2"></i>
+            </button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
